@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+  }
+
+.line {
+    height: 100%;
+    width: 4px;
+}
+.circle {
+    animation: mymove 10s linear 0s infinite normal forwards;
+}
+.circle .flex>img {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: mymove 10s linear 0s infinite reverse backwards;
+}
+.circle .reverse {
+    animation: mymove 10s linear 0s infinite reverse backwards;
+}
+@keyframes mymove {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+[hero] {
+    overflow: hidden;
+}
+
+form.loading {
+    pointer-events: none;
+    opacity: 0.5;
+}
