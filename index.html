@@ -254,6 +254,7 @@
 							<div>
 								<input class="mb-3 font-light rounded-full bg-primary text-white px-4 py-2" type="submit" value="Send Message">
 							</div>
+							<input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
 							<div class="message border border-[#c9f29b] px-2 py-2 hidden">
 								Thank you for your interest, will get back to you shortly
 							</div>
@@ -280,6 +281,10 @@
 		document.querySelector('#myForm').addEventListener('submit', function(event) {
 			let $this = this;
 			event.preventDefault();
+			if(!!event.target.querySelector("[name='honeypot']").value){
+				$this.classList.add("loading");
+				return;
+			};
 			$this.classList.add("loading");
 			emailjs.sendForm('service_390lt4r', 'template_3swz4qh', '#myForm').then(function(response) {
 				$this.reset();
